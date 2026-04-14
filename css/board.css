@@ -1,0 +1,19 @@
+body, #board {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    margin-top: 50px;
+}
+
+.i {
+    height: 80px;
+    width: 80px;
+    border: 1.5px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
