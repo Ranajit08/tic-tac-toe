@@ -7,6 +7,7 @@ const ovel = document.getElementById("ovel");
 let side;
 let mode;
 
+
 simple.addEventListener('click', function (){
     simple.style.backgroundColor = 'black';
     medium.style.backgroundColor = 'white';
