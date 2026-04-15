@@ -15,7 +15,6 @@ simple.addEventListener('click', function (){
     hard.style.color = 'black';
     simple.style.color = 'white';
     mode = 'simple';
-    console.log(mode);
 });
 
 medium.addEventListener('click', function (){
@@ -26,7 +25,6 @@ medium.addEventListener('click', function (){
     hard.style.color = 'black';
     medium.style.color = 'white';
     mode = 'medium';
-    console.log(mode);
 });
 
 hard.addEventListener('click', function (){
@@ -37,7 +35,6 @@ hard.addEventListener('click', function (){
     simple.style.color = 'black';
     hard.style.color = 'white';
     mode = 'hard';
-    console.log(mode);
 });
 
 cross.addEventListener('click', function (){

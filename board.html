@@ -8,26 +8,27 @@
 </head>
 <body>
     <div id="board">
-        <h1></h1>
-        <div></div>
         <table>
             <tr>
-                <td><input type="button" class="i"></td>
-                <td><input type="button" class="i"></td>
-                <td><input type="button" class="i"></td>
+                <td><input type="button" class="i" id="1" value=""></td>
+                <td><input type="button" class="i" id="2" value=""></td>
+                <td><input type="button" class="i" id="3" value=""></td>
             </tr>
             <tr>
-                <td><input type="button" class="i"></td>
-                <td><input type="button" class="i"></td>
-                <td><input type="button" class="i"></td>
+                <td><input type="button" class="i" id="4" value=""></td>
+                <td><input type="button" class="i" id="5" value=""></td>
+                <td><input type="button" class="i" id="6" value=""></td>
             </tr>
             <tr>
-                <td><input type="button" class="i"></td>
-                <td><input type="button" class="i"></td>
-                <td><input type="button" class="i"></td>
+                <td><input type="button" class="i" id="7" value=""></td>
+                <td><input type="button" class="i" id="8" value=""></td>
+                <td><input type="button" class="i" id="9" value=""></td>
             </tr>
         </table>
-        <div></div>
+        <dialog>
+            <p id="h"></p>
+            <input type="button" id="restart" onclick="restart()" value="Restart">
+        </dialog>
     </div>
     <script src="js/board.js"></script>
 </body>
