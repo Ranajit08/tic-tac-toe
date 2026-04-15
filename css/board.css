@@ -29,6 +29,8 @@ dialog {
 }
 
 dialog[open] {
+    height: 140px;
+    width: 150px;
     position: fixed;
     top: 50%;
     left: 50%;

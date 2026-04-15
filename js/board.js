@@ -4,7 +4,6 @@ function restart (){
     window.history.back();
 }
 
-
 let mode = params.get("mode");
 let side = params.get("side");
 let botSide;
@@ -23,6 +22,16 @@ function GetBoard (){
     return Array.from(document.querySelectorAll(".i"), c => c.value);
 };
 
+// Tie checker
+function TieChecker () {
+    let Board = GetBoard();
+
+    if (!Board.includes("")) {
+        document.querySelector("dialog").showModal();
+        document.getElementById("h").textContent = "You Tie!";
+    }
+}
+
 // Rules for this game
 function Rules (){
     let board = GetBoard();
@@ -35,7 +44,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[0] === userSide) {
+    } 
+    
+    if (board[0] === userSide) {
         if (board[1] === userSide) {
             if (board[2] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -52,7 +63,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[0] === userSide) {
+    } 
+    
+    if (board[0] === userSide) {
         if (board[3] === userSide) {
             if (board[6] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -69,7 +82,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[0] === userSide) {
+    } 
+    
+    if (board[0] === userSide) {
         if (board[4] === userSide) {
             if (board[8] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -86,7 +101,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[2] === userSide) {
+    } 
+    
+    if (board[2] === userSide) {
         if (board[5] === userSide) {
             if (board[8] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -103,7 +120,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[2] === userSide) {
+    } 
+    
+    if (board[2] === userSide) {
         if (board[4] === userSide) {
             if (board[6] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -120,7 +139,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[6] === userSide) {
+    } 
+    
+    if (board[6] === userSide) {
         if (board[7] === userSide) {
             if (board[8] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -137,7 +158,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[1] === userSide) {
+    } 
+    
+    if (board[1] === userSide) {
         if (board[4] === userSide) {
             if (board[7] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -154,7 +177,9 @@ function Rules (){
                 document.getElementById("h").textContent = "You loose!";
             }
         }
-    } else if (board[3] === userSide) {
+    } 
+    
+    if (board[3] === userSide) {
         if (board[4] === userSide) {
             if (board[5] === userSide) {
                 document.querySelector("dialog").showModal();
@@ -162,6 +187,7 @@ function Rules (){
             }
         }
     }
+    TieChecker();
 };
 
 // Simple mode
