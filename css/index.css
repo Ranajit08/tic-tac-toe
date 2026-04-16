@@ -49,13 +49,6 @@ h3 {
     color: black;
 }
 
-#medium {
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color: white;
-    color: black;
-}
-
 #simple {
     padding-left: 17px;
     padding-right: 17px;
@@ -65,7 +58,7 @@ h3 {
 
 #mode {
     border: 1px solid black;
-    width: 350px;
+    width: 250px;
     height: 265px;
     border-radius: 17px;
     box-shadow: 0px 0px 15px 1px black;

@@ -10,29 +10,15 @@ let mode;
 
 simple.addEventListener('click', function (){
     simple.style.backgroundColor = 'black';
-    medium.style.backgroundColor = 'white';
     hard.style.backgroundColor = 'white';
-    medium.style.color = 'black';
     hard.style.color = 'black';
     simple.style.color = 'white';
     mode = 'simple';
 });
 
-medium.addEventListener('click', function (){
-    medium.style.backgroundColor = 'black';
-    simple.style.backgroundColor = 'white';
-    hard.style.backgroundColor = 'white';
-    simple.style.color = 'black';
-    hard.style.color = 'black';
-    medium.style.color = 'white';
-    mode = 'medium';
-});
-
 hard.addEventListener('click', function (){
     hard.style.backgroundColor = 'black';
-    medium.style.backgroundColor = 'white';
     simple.style.backgroundColor = 'white';
-    medium.style.color = 'black';
     simple.style.color = 'black';
     hard.style.color = 'white';
     mode = 'hard';

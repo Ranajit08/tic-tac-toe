@@ -29,7 +29,7 @@ dialog {
 }
 
 dialog[open] {
-    height: 140px;
+    height: 150px;
     width: 150px;
     position: fixed;
     top: 50%;
