@@ -28,7 +28,7 @@ function TieChecker () {
 
     if (!Board.includes("")) {
         document.querySelector("dialog").showModal();
-        document.getElementById("h").textContent = "You Tie!";
+        document.getElementById("h").textContent = "It's a Tie!";
     }
 }
 
