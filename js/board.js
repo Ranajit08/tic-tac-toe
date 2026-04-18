@@ -18,177 +18,137 @@ if (side == 'cross') {
 };
 
 // this function get board data and put that in array.
-function GetBoard (){
+function getBoard (){
     return Array.from(document.querySelectorAll(".i"), c => c.value);
 };
 
-// Tie checker
-function TieChecker () {
-    let Board = GetBoard();
+function rules() {
+    const modal = document.querySelector('dialog');
+    const text = document.querySelector('#h');
+    let b = getBoard();
+    let u = utility(b);
 
-    if (!Board.includes("")) {
-        document.querySelector("dialog").showModal();
-        document.getElementById("h").textContent = "It's a Tie!";
+    if (u === null) return;
+
+    modal.showModal();
+
+    if (u === 1) {
+        // win
+        text.textContent = "You Win";
+    } else if (u === -1) {
+        // lost
+        text.textContent = "You lose";
+    } else if (u === 0) {
+        // Tie
+        text.textContent = "It's a Tie";
     }
-}
-
-// Rules for this game
-function Rules (){
-    let board = GetBoard();
-
-    // 0 1 2
-    if (board[0] === botSide) {
-        if (board[1] === botSide) {
-            if (board[2] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[0] === userSide) {
-        if (board[1] === userSide) {
-            if (board[2] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 0 3 6
-    if (board[0] === botSide) {
-        if (board[3] === botSide) {
-            if (board[6] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[0] === userSide) {
-        if (board[3] === userSide) {
-            if (board[6] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 0 4 8 
-    if (board[0] === botSide) {
-        if (board[4] === botSide) {
-            if (board[8] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[0] === userSide) {
-        if (board[4] === userSide) {
-            if (board[8] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 2 5 8 
-    if (board[2] === botSide) {
-        if (board[5] === botSide) {
-            if (board[8] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[2] === userSide) {
-        if (board[5] === userSide) {
-            if (board[8] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 2 4 6 
-    if (board[2] === botSide) {
-        if (board[4] === botSide) {
-            if (board[6] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[2] === userSide) {
-        if (board[4] === userSide) {
-            if (board[6] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 6 7 8 
-    if (board[6] === botSide) {
-        if (board[7] === botSide) {
-            if (board[8] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[6] === userSide) {
-        if (board[7] === userSide) {
-            if (board[8] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 1 4 7 
-    if (board[1] === botSide) {
-        if (board[4] === botSide) {
-            if (board[7] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[1] === userSide) {
-        if (board[4] === userSide) {
-            if (board[7] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-
-    // 3 4 5 
-    if (board[3] === botSide) {
-        if (board[4] === botSide) {
-            if (board[5] === botSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You loose!";
-            }
-        }
-    } 
-    
-    if (board[3] === userSide) {
-        if (board[4] === userSide) {
-            if (board[5] === userSide) {
-                document.querySelector("dialog").showModal();
-                document.getElementById("h").textContent = "You Won!";
-            }
-        }
-    }
-    TieChecker();
 };
+
+// 1 -- win, 0 -- Tie, -1 -- Lost
+function utility(state) {
+    const winPattern = [
+                        [0,1,2], [0,4,8], 
+                        [0,3,6], [8,7,6], 
+                        [2,5,8], [2,4,6], 
+                        [1,4,7], [3,4,5]
+                    ];
+    for (let pattern of winPattern) {
+        if (
+            state[pattern[0]] == userSide && 
+            state[pattern[1]] == userSide && 
+            state[pattern[2]] == userSide
+        ) {
+            return 1;
+        }
+        if (
+            state[pattern[0]] == botSide && 
+            state[pattern[1]] == botSide && 
+            state[pattern[2]] == botSide
+        ) {
+            return -1;
+        }
+    }
+    if (!state.includes("")) {
+        return 0;
+    }
+    return null;
+};
+
+function isTerminal(state) {
+    return utility(state) !== null;
+};
+
+function depth() {
+    let b = getBoard();
+    let depth = 0;
+    b.forEach(val => {
+        if (val === "") {
+            depth++;
+        }
+    });
+    return depth;
+};
+
+function actions(state) {
+    let b = [];
+    state.forEach((val, index) => {
+        if (val === "") {
+            b.push(index);
+        }
+    });
+    return b;
+};
+
+function result(state, action, player) {
+    let newstate = [...state];
+    newstate[action] = player;
+    return newstate;
+};
+
+// minimax
+function miniMax(state, depth, maximizing_player) {
+    if (isTerminal(state)) {
+        return -utility(state);
+    };
+
+    if (depth === 0) {
+        return 0;
+    };
+
+    if (maximizing_player) {
+        let max_eval = -Infinity;
+        for (let action of actions(state)) {
+            let e = miniMax(result(state, action, botSide), depth - 1, false);
+            max_eval = Math.max(max_eval, e);
+        };
+        return max_eval;
+    } else {
+        let min_eval = Infinity;
+        for (let action of actions(state)) {
+            let e = miniMax(result(state, action, userSide), depth - 1, true);
+            min_eval = Math.min(min_eval, e);
+        };
+        return min_eval;
+    };
+};
+
+function getBestMove(state) {
+    let bestScore = -Infinity;
+    let bestMove = null;
+    let d = depth();
+
+    for (let action of actions(state)) {
+        let newState = result(state, action, botSide);
+
+        let score = miniMax(newState, d - 1, false);
+
+        if (score > bestScore) {
+            bestScore = score;
+            bestMove = action;
+        }
+    }
+    return bestMove;
+}
 
 // Simple mode
 function simple(board, side) {
@@ -207,7 +167,7 @@ function simple(board, side) {
     let move = emptyIndexes[randIndex];
 
     cells[move].value = side;
-    return cells;
+    return;
 }
 
 // movement 
@@ -215,11 +175,22 @@ document.querySelectorAll(".i").forEach(cell => {
     cell.addEventListener("click", function () {
         if (cell.value === ""){
             cell.value = userSide;
-            let board = GetBoard();
+            let board = getBoard();
+            if (isTerminal(board)) {
+                rules();
+                return;
+            }
             if (mode == "simple") {
                 simple(board, botSide);
-                Rules();
+                rules();
             } 
+            if (mode == "hard") {
+                let move = getBestMove(board, botSide);
+                let cell = document.querySelectorAll(".i");
+                cell[move].value = botSide;
+                rules();
+            }
+            
         }
     });
 });
