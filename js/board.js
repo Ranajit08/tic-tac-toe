@@ -3,6 +3,10 @@ const bWin = new Audio("../assets/sounds/mixkit-instant-win-2021.wav");
 const bLse = new Audio("../assets/sounds/mixkit-losing-bleeps-2026.wav");
 let mode = params.get("mode");
 
+document.getElementById('rules').addEventListener('click', () => {
+    window.history.back();
+})
+
 const ovel = document.getElementById('ovel');
 const cross = document.getElementById('cross');
 let userSide;
@@ -25,7 +29,7 @@ ovel.addEventListener('click', () => {
     botSide = '✕';
 });
 
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('side').showModal();
     const play = document.getElementById('play');
     play.addEventListener('click', () => {
