@@ -3,7 +3,8 @@ const bWin = new Audio("../assets/sounds/mixkit-instant-win-2021.wav");
 const bLse = new Audio("../assets/sounds/mixkit-losing-bleeps-2026.wav");
 let mode = params.get("mode");
 
-document.getElementById('rules').addEventListener('click', () => {
+const back = document.getElementById("rules");
+back.addEventListener('click', function() {
     window.history.back();
 })
 
