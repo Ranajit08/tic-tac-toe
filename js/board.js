@@ -1,21 +1,45 @@
 const params = new URLSearchParams(window.location.search);
-
-function restart (){
-    window.history.back();
-}
-
+const bWin = new Audio("../assets/sounds/mixkit-instant-win-2021.wav");
+const bLse = new Audio("../assets/sounds/mixkit-losing-bleeps-2026.wav");
 let mode = params.get("mode");
-let side = params.get("side");
-let botSide;
-let userSide;
 
-if (side == 'cross') {
-    botSide = '◯';
+const ovel = document.getElementById('ovel');
+const cross = document.getElementById('cross');
+let userSide;
+let botSide;
+
+cross.addEventListener('click', () => {
+    cross.style.backgroundColor = 'black';
+    cross.style.color = 'white';
+    ovel.style.backgroundColor = 'white';
+    ovel.style.color = 'black';
     userSide = '✕';
-} else {
-    botSide = '✕';
+    botSide = '◯';
+});
+ovel.addEventListener('click', () => {
+    cross.style.backgroundColor = 'white';
+    cross.style.color = 'black';
+    ovel.style.backgroundColor = 'black';
+    ovel.style.color = 'white';
     userSide = '◯';
-};
+    botSide = '✕';
+});
+
+window.addEventListener('load', () => {
+    document.getElementById('side').showModal();
+    const play = document.getElementById('play');
+    play.addEventListener('click', () => {
+        if (userSide == undefined) {
+            alert('dgkdj');
+            return;
+        };
+        document.getElementById('side').close();
+    });
+    const r = document.getElementById('r');
+    r.addEventListener('click', () => {
+        window.history.back();
+    });
+});
 
 // this function get board data and put that in array.
 function getBoard (){
@@ -23,7 +47,7 @@ function getBoard (){
 };
 
 function rules() {
-    const modal = document.querySelector('dialog');
+    const modal = document.querySelector('#w');
     const text = document.querySelector('#h');
     let b = getBoard();
     let u = utility(b);
@@ -35,9 +59,11 @@ function rules() {
     if (u === 1) {
         // win
         text.textContent = "You Win";
+        bWin.play();
     } else if (u === -1) {
         // lost
         text.textContent = "You lose";
+        bLse.play();
     } else if (u === 0) {
         // Tie
         text.textContent = "It's a Tie";
@@ -170,30 +196,53 @@ function simple(board, side) {
     return;
 }
 
-// movement 
-document.querySelectorAll(".i").forEach(cell => {
-    cell.addEventListener("click", function () {
-        if (cell.value === ""){
-            cell.value = userSide;
-            let board = getBoard();
-            if (isTerminal(board)) {
-                rules();
-                return;
-            }
-            if (mode == "simple") {
-                simple(board, botSide);
-                rules();
-            } 
-            if (mode == "hard") {
-                let move = getBestMove(board, botSide);
-                let cell = document.querySelectorAll(".i");
-                cell[move].value = botSide;
-                rules();
-            }
-            
-        }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+const overlay = document.getElementById('overlay');
+
+function freeze() {
+    overlay.style.display = "block";
+}
+
+function unfreeze() {
+    overlay.style.display = "none";
+}
+
+document.getElementById('restart').addEventListener('click', () => {
+    document.querySelectorAll(".i").forEach(cell => {
+        cell.value = "";
+        document.getElementById('w').close();
     });
-});
+})
 
-
-
+// movement 
+async function movement() {
+    document.querySelectorAll(".i").forEach(cell => {
+        cell.addEventListener("click", async () => {
+            if (cell.value == ""){
+                cell.value = userSide;
+                freeze();
+                await sleep(500);
+                unfreeze();
+                let board = getBoard();
+                if (isTerminal(board)) {
+                    rules();
+                    return;
+                    console.log('hello');
+                }
+                if (mode == "simple") {
+                    simple(board, botSide);
+                    rules();
+                } 
+                if (mode == "hard") {
+                    let move = getBestMove(board, botSide);
+                    let cell = document.querySelectorAll(".i");
+                    cell[move].value = botSide;
+                    rules();
+                }
+            }
+        });
+    });
+};
+movement();

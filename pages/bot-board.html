@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
@@ -25,11 +25,21 @@
                 <td><input type="button" class="i" id="9" value=""></td>
             </tr>
         </table>
-        <dialog>
+        <dialog id="side">
+            <div id="s">
+                <input type="button" id="ovel" class="p" value="◯">
+                <input type="button" id="cross" class="p" value="✕">
+            </div>
+            <input type="button" id="play" value="Play">
+            <input type="button" id="r" value="Back">
+        </dialog>
+        <dialog id="w">
             <p id="h"></p>
-            <input type="button" id="restart" onclick="restart()" value="Restart">
+            <input type="button" id="restart" value="Restart">
         </dialog>
     </div>
-    <script src="js/board.js"></script>
+    <input type="button" id="rules" value="Back">
+    <div id="overlay"></div>
+    <script src="../js/board.js"></script>
 </body>
 </html>

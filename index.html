@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/images/icons8-tic-tac-toe-32.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
-    <div id="box">
-        <h1>Tic-Tac-Toe</h1>
-        <div id="mode">
-            <h3>Choose mode</h3>
-            <input type="button" value="Simple" class="m" id="simple">
-            <input type="button" value="Hard" class="m" id="hard">
-            <h4>Choose side</h4>
-            <div id="side">
-                <input type="button" value="✕" id="cross">
-                <input type="button" value="◯" id="ovel">
-            </div>
+    <h1>Tic-Tac-Toe</h1>
+    <hr>
+    <div id="mode-selector">
+        <div class="m" id="b1">
+            <img src="assets/images/person.svg" alt="single person">
+            <a href="pages/bot-mode.html">Play Solo</a>
         </div>
-        <input type="button" id="play" value="Play Game">
-        <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.abbr.min.js" defer></script>
-        <p>Visitor: <span id="busuanzi_site_pv"></span></p>
+        <div class="m" id="b2">
+            <img src="assets/images/people.svg" alt="peoples">
+            <a href="">Play with a friend</a>
+        </div>
     </div>
-    <script src="js/index.js"></script>
+    <a href="./pages/rules.html" id="rules">Rules</a>
 </body>
 </html>
