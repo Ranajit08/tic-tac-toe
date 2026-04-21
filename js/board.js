@@ -2,33 +2,19 @@ const params = new URLSearchParams(window.location.search);
 const bWin = new Audio("../assets/sounds/mixkit-instant-win-2021.wav");
 const bLse = new Audio("../assets/sounds/mixkit-losing-bleeps-2026.wav");
 let mode = params.get("mode");
+let userSide = params.get("side");
 
 const back = document.getElementById("back");
 back.addEventListener('click', function() {
     window.history.back();
 })
 
-const ovel = document.getElementById('ovel');
-const cross = document.getElementById('cross');
-let userSide;
 let botSide;
-
-cross.addEventListener('click', () => {
-    cross.style.backgroundColor = 'black';
-    cross.style.color = 'white';
-    ovel.style.backgroundColor = 'white';
-    ovel.style.color = 'black';
-    userSide = '✕';
-    botSide = '◯';
-});
-ovel.addEventListener('click', () => {
-    cross.style.backgroundColor = 'white';
-    cross.style.color = 'black';
-    ovel.style.backgroundColor = 'black';
-    ovel.style.color = 'white';
-    userSide = '◯';
+if (userSide == '◯') {
     botSide = '✕';
-});
+} else {
+    botSide = '◯';
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('side').showModal();

@@ -3,10 +3,10 @@ const hard = document.getElementById("hard");
 const back = document.getElementById("rules");
 
 smpl.addEventListener('click', function() {
-    window.location.href = "bot-board.html?mode=simple"; 
+    window.location.href = "side.html?mode=simple"; 
 })
 hard.addEventListener('click', function() {
-    window.location.href = "bot-board.html?mode=hard"; 
+    window.location.href = "side.html?mode=hard"; 
 })
 back.addEventListener('click', function() {
     window.history.back();

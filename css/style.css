@@ -90,15 +90,6 @@ a {
     border: 1px solid black;
     border-radius: 10px;
 }
-#side[open] {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 150px;
-    width: 250px;
-    border: none;
-    border-radius: 10px;
-}
 #s {
     display: flex;
     flex-direction: row;
@@ -113,38 +104,29 @@ a {
     border-radius: 10px;
 }
 #ovel {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: white;
     color: black;
 }
 #cross {
-    padding-left: 14px;
-    padding-right: 14px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 #play {
     background-color:black;
     color: white;
-    font-size: 17px;
+    font-size: 20px;
     border: 1px solid black;
     border-radius: 10px;
     padding: 5px;
-}
-#side::backdrop {
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(3px);
-}
-#r {
-    background-color:black;
-    color: white;
-    font-size: 17px;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: "VT323", monospace;
 }
 #overlay {
     position: fixed;
