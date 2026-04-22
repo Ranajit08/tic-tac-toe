@@ -20,6 +20,9 @@ ovel.addEventListener('click', () => {
 });
 
 document.getElementById('play').addEventListener('click', () => {
+    if (userSide == undefined) {
+        return;
+    }
     window.location.href = `bot-board.html?mode=${mode}&side=${userSide}`; 
 })
 
