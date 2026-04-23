@@ -5,8 +5,18 @@ let cross = params.get('cross');
 const ovelSide = '◯';
 const crossSide = '✕';
 
+const audio = new Audio('../assets/sounds/mixkit-achievement-bell-600.wav');
+
 document.getElementById('back').addEventListener('click', () => {
     window.history.back();
+})
+
+document.getElementById('restart').addEventListener('click', () => {
+    document.querySelectorAll(".i").forEach(cell => {
+        cell.value = "";
+        document.getElementById('w').close();
+        document.querySelector('h2').textContent = `${ovel}'s turn`;
+    });
 })
 
 function getBoard (){
@@ -26,11 +36,11 @@ function rules() {
     if (u === 1) {
         // win
         text.textContent = `${ovel} Win`;
-        bWin.play();
+        audio.play();
     } else if (u === -1) {
         // lost
         text.textContent = `${cross} Win`;
-        bLse.play();
+        audio.play();
     } else if (u === 0) {
         // Tie
         text.textContent = "It's a Tie";
@@ -67,3 +77,24 @@ function utility(state) {
     return null;
 };
 
+function isTerminal(state) {
+    return utility(state) !== null;
+};
+
+// movement 
+let side = ovelSide;
+document.querySelector('h2').textContent = `${ovel}'s turn`;
+document.querySelectorAll(".i").forEach(cell => {
+    cell.addEventListener("click", () => {
+        if (cell.value == ""){
+            cell.value = side;
+            rules();
+            side = (side === ovelSide) ? crossSide : ovelSide;
+        }
+        if (side === ovelSide) {
+            document.querySelector('h2').textContent = `${ovel}'s turn`;
+        } else {
+            document.querySelector('h2').textContent = `${cross}'s turn`;
+        }
+    });
+});

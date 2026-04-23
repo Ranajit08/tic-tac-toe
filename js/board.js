@@ -17,11 +17,11 @@ if (userSide == '◯') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('h2').textContent = `Your turn`;
     document.getElementById('side').showModal();
     const play = document.getElementById('play');
     play.addEventListener('click', () => {
         if (userSide == undefined) {
-            alert('dgkdj');
             return;
         };
         document.getElementById('side').close();
@@ -204,6 +204,7 @@ document.getElementById('restart').addEventListener('click', () => {
     document.querySelectorAll(".i").forEach(cell => {
         cell.value = "";
         document.getElementById('w').close();
+        document.querySelector('h2').textContent = `Your turn`;
     });
 })
 
@@ -213,14 +214,14 @@ async function movement() {
         cell.addEventListener("click", async () => {
             if (cell.value == ""){
                 cell.value = userSide;
+                document.querySelector('h2').textContent = `bot's turn`;
                 freeze();
-                await sleep(500);
+                await sleep(1000);
                 unfreeze();
                 let board = getBoard();
                 if (isTerminal(board)) {
                     rules();
                     return;
-                    console.log('hello');
                 }
                 if (mode == "simple") {
                     simple(board, botSide);
@@ -232,6 +233,7 @@ async function movement() {
                     cell[move].value = botSide;
                     rules();
                 }
+                document.querySelector('h2').textContent = `Your turn`;
             }
         });
     });
