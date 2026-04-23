@@ -4,6 +4,7 @@ let ovel = params.get('ovel');
 let cross = params.get('cross');
 const ovelSide = '◯';
 const crossSide = '✕';
+let side = ovelSide;
 
 const audio = new Audio('../assets/sounds/mixkit-achievement-bell-600.wav');
 
@@ -16,6 +17,7 @@ document.getElementById('restart').addEventListener('click', () => {
         cell.value = "";
         document.getElementById('w').close();
         document.querySelector('h2').textContent = `${ovel}'s turn`;
+        let side = ovelSide;
     });
 })
 
@@ -37,13 +39,16 @@ function rules() {
         // win
         text.textContent = `${ovel} Win`;
         audio.play();
+        side  = undefined;
     } else if (u === -1) {
         // lost
         text.textContent = `${cross} Win`;
         audio.play();
+        side  = undefined;
     } else if (u === 0) {
         // Tie
         text.textContent = "It's a Tie";
+        side  = undefined;
     }
 };
 
@@ -82,7 +87,6 @@ function isTerminal(state) {
 };
 
 // movement 
-let side = ovelSide;
 document.querySelector('h2').textContent = `${ovel}'s turn`;
 document.querySelectorAll(".i").forEach(cell => {
     cell.addEventListener("click", () => {
