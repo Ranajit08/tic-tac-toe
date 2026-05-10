@@ -4,9 +4,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: white;
-    color: black;
+    background-color: rgb(10, 0, 99);
+    color: rgb(255, 255, 255);
     font-family: "VT323", monospace;
+}
+hr {
+    color: rgb(5, 5, 177);
+
 }
 #mode-selector {
     display: flex;
@@ -22,50 +26,68 @@ h1 {
 }
 hr {
     width: 100%;
-    border: 1px solid black;
+    border: 5px solid rgb(0, 0, 138);
+    box-shadow: 0 0 10px rgb(0, 0, 117, 0.5);
 }
 .m {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    border: 1px solid black;
+    border: 2px solid rgb(25, 0, 255);
     font-size: 25px;
     padding: 10px;
-    color: black;
+    color: rgb(175, 175, 175);
     border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(0, 0, 0, 0.5);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
+}
+.m > img {
+    height: 20px;
+    width: 20px;
+    filter: invert(36%) sepia(98%) saturate(747%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 #b1 {
     padding-left: 54px;
     padding-right: 54px;
+    color: white;
 }
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 #rules {
-    font-size: 20px;
     margin-top: 100px;
-    padding: 15px;
     justify-content: center;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
+    background-color: rgb(10, 0, 99);
+    font-family: "VT323", monospace;
     padding-left: 20px;
     padding-right: 20px;
-    font-family: "VT323", monospace;
-}
-.b {
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     gap: 10px;
-    border: 1px solid black;
+    border: 2px solid rgb(25, 0, 255);
     font-size: 25px;
     padding: 10px;
+    color: rgb(175, 175, 175);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(0, 0, 0, 0.5);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
+}
+.b {
     padding-left: 20px;
     padding-right: 20px;
-    color: black;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: 2px solid rgb(25, 0, 255);
+    font-size: 25px;
+    padding: 10px;
+    color: rgb(175, 175, 175);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(0, 0, 0, 0.5);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
 }
 .t {
     background: transparent;
@@ -74,6 +96,7 @@ a {
     color: black;
     font-family: "VT323", monospace;
     cursor: pointer;
+    color: rgb(175, 175, 175);
 }
 #board {
     display: flex;
@@ -86,10 +109,11 @@ a {
     font-size: 37px;
     height: 80px;
     width: 80px;
-    background-color: white;
-    color: black;
-    border: 1px solid black;
+    background-color: rgb(10, 0, 99);
+    color: white;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
+    box-shadow: inset 5px 5px 15px rgb(0, 0, 0, 0.5);
 }
 #s {
     display: flex;
@@ -99,18 +123,20 @@ a {
     align-items: center;
 }
 .p {
+    font-weight: bold;
+    border: 2px solid rgb(25, 0, 255);
     font-size: 30px;
-    background-color: white;
-    border: 1px solid black;
+    background-color:  rgb(10, 0, 99);
     border-radius: 10px;
+    color: rgb(175, 175, 175);
+    box-shadow: 1px 1px 5px rgb(0, 0, 0, 0.5);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
 }
 #ovel {
     padding-left: 23px;
     padding-right: 23px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: white;
-    color: black;
 }
 #cross {
     padding-left: 25px;
@@ -119,15 +145,19 @@ a {
     padding-bottom: 10px;
 }
 #play {
-    background-color:black;
-    color: white;
-    font-size: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
     font-family: "VT323", monospace;
+
+    font-weight: bold;
+    border: 2px solid rgb(25, 0, 255);
+    font-size: 30px;
+    background-color:  rgb(10, 0, 99);
+    border-radius: 10px;
+    color: rgb(175, 175, 175);
+    box-shadow: 1px 1px 5px rgb(0, 0, 0, 0.5);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
 }
 #overlay {
     position: fixed;
@@ -140,6 +170,8 @@ a {
     z-index: 999;
 }
 #w[open] {
+    background-color: rgb(25, 0, 255);
+    color: rgb(175, 175, 175);
     padding: 10px;
     font-size: 21px;
     height: 170px;
@@ -157,9 +189,10 @@ a {
     font-size: 20px;
     padding: 5px;
     justify-content: center;
-    border: 1px solid black;
+    border: 2px solid rgba(25, 0, 255);
     border-radius: 10px;
-    background-color: black;
+    background-color: rgb(10, 0, 99);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
     color: white;
     padding-left: 20px;
     padding-right: 20px;
@@ -170,10 +203,11 @@ a {
     backdrop-filter: blur(3px);
 }
 #w > #back {
-    background-color:black;
+    background-color:rgb(10, 0, 99);
     color: white;
     font-size: 20px;
-    border: 1px solid black;
+    border: 2px solid rgba(25, 0, 255);
+    box-shadow: inset 0 4px 10px rgba(25, 0, 255, 0.5);
     border-radius: 10px;
     padding: 5px;
     padding-left: 32px;
@@ -199,8 +233,9 @@ a {
 }
 .input > p {
     font-size: 20px;
-    border: 1px solid black;
-    background-color: black;
+    font-weight: bold;
+    border: 2px solid rgba(25, 0, 255);
+    background-color: rgb(10, 0, 99);
     color: white;
     border-radius: 100px;
     padding: 11px;
@@ -208,4 +243,18 @@ a {
 #c {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+#hs {
+    color: rgb(117, 101, 255);
+}
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgb(25, 0, 255);
+    box-shadow: 4px 4px 5px rgb(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+#h {
+    font-size: 25px;
 }

@@ -5,17 +5,13 @@ let mode = params.get('mode');
 let userSide;
 
 cross.addEventListener('click', () => {
-    cross.style.backgroundColor = 'black';
-    cross.style.color = 'white';
-    ovel.style.backgroundColor = 'white';
-    ovel.style.color = 'black';
+    cross.style.backgroundColor = 'rgb(25, 0, 255)';
+    ovel.style.backgroundColor = 'rgb(10, 0, 99)';
     userSide = '✕';
 });
 ovel.addEventListener('click', () => {
-    cross.style.backgroundColor = 'white';
-    cross.style.color = 'black';
-    ovel.style.backgroundColor = 'black';
-    ovel.style.color = 'white';
+    cross.style.backgroundColor = 'rgb(10, 0, 99)';
+    ovel.style.backgroundColor = 'rgb(25, 0, 255)';
     userSide = '◯';
 });
 
